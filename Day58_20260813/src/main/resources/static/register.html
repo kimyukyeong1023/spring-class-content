@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Post 실습</h2>
+
+    <!-- 내가 입력한 값을 톰캣(서버)에게 보내기! 
+      button type="submit" 서버로 form태그 안에 
+      input 값들을 보내라!
+
+      서버로 데이터들을 보낼때 name=변수명 하고 
+      자바가 데이터를 받을 때 변수명이 똑같이 일치해야된다.
+      method="post" 반드시 작성해야된다
+      통신의 종류가 뭐냐? get?(조회) port?(추가) 
+    -->
+
+    <form action="/register" method="post">
+      <input type="text" name="id" placeholder="아이디" />
+      <input type="password" name="pw" placeholder="비밀번호" />
+      <input type="tel" name="phone" placeholder="폰번호" />
+      <input type="text" name="address" placeholder="주소" />
+      <input type="email" name="email" placeholder="이메일" />
+      <input type="text" name="gender" placeholder="성별" />
+      <button type="submit">전송</button>
+    </form>
+  </body>
+</html>
