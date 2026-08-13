@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+
+<!-- 부트스트랩 아이콘 -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+<!--  내 디자인 파일이 항상 가장 밑에 와야된다. -->
+<link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+	<div id="wrap">
+		<header class="max-container">
+			<i class="bi bi-apple"></i>
+			<nav>
+				<a href="#store">스토어</a> <a href="#mac">Mac</a> <a href="#ipad">iPad</a>
+				<a href="#iphone">iPhone</a> <a href="#watch">Watch</a> <a
+					href="#airpods">AirPods</a> <a href="#support">고객지원</a>
+
+			</nav>
+
+			<div class="icons">
+				<i class="bi bi-search"></i> <i class="bi bi-bag-fill"></i>
+			</div>
+		</header>
+
+		<main class="max-container">
+			<section class="first-page">
+				<h1>iPhone 16 Pro - yukyeong</h1>
+				<h3>티타늄.강인함.가벼움.Pro.</h3>
+				<div class="btns">
+					<button>더 알아보기</button>
+					<button>장바구니</button>
+				</div>
+
+				<div class="main-image">
+					<img alt="아이폰이미지" src="/image/mainImage.avif">
+				</div>
+			</section>
+				<h1>나에게 맞는 프로 모델 커스텀</h1>
+				<h3>원하는 마감 및 용량을 선택하여 실시간 가격을 확인하세요.</h3>
+				<div class="product">
+					<div class="product-show">
+						<img alt="폰사진" src="/image/mainImage.avif">
+						<p>네추럴 타티늄</p>
+					</div>
+					<div class="product-select">
+						<p>마감선택</p>
+						<div>
+							<button></button>
+							<button></button>
+							<button></button>
+							<button></button>
+
+						</div>
+						<p>저장 용량 선택</p>
+						<ul>
+							<li></li>
+							<li></li>
+							<li></li>
+							
+						</ul>
+						<div>
+						
+						</div>
+
+						
+					</div>
+				</div>
+
+			<section class="second-page">
+				
+			</section>
+		</main>
+	</div>
+
+	<script src="/js/index.js"></script>
+</body>
+</html>

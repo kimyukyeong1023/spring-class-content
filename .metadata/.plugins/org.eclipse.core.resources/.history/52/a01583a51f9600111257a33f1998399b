@@ -1,0 +1,14 @@
+<html>
+<head></head>
+<body>
+	<h2>Seo-Hee naver main page</h2>
+
+	<header>
+		<ul>
+			<li><a href="/blog">blog</a></li>
+			<li>cafe</li>
+			<li>mail</li>
+		</ul>
+	</header>
+</body>
+</html>

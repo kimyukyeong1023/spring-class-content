@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+
+<!-- 부트스트랩 아이콘 -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+<!--  내 디자인 파일이 항상 가장 밑에 와야된다. -->
+<link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+	<div id="wrap">
+		<header class="max-container">
+			<i class="bi bi-apple"></i>
+			<nav>
+				<a href="#store">스토어</a> <a href="#mac">Mac</a> <a href="#ipad">iPad</a>
+				<a href="#iphone">iPhone</a> <a href="#watch">Watch</a> <a
+					href="#airpods">AirPods</a> <a href="#support">고객지원</a>
+
+			</nav>
+
+			<div>
+				<i class="bi bi-search"></i> <i class="bi bi-bag-fill"></i>
+			</div>
+		</header>
+
+		<main class="max-container">
+			<h1>iphone16</h1>
+			<h3>티타늄</h3>
+			<div class="btns">
+				<button>더 알아보기</button>
+				<button>장바구니</button>
+			</div>
+			<div class="main-image">
+				<img alt="아이폰이미지" src="/image/mainImage.avif">
+			</div>
+			
+		</main>
+	</div>
+
+	<script src="/js/index.js"></script>
+</body>
+</html>

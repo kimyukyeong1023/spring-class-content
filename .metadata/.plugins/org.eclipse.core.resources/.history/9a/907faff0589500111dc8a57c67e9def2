@@ -1,0 +1,52 @@
+package com.yonsai.first.Main;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MainApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MainApplication.class, args);
+	}
+
+}
+//자바는 웹통신을 못한다.
+//서버는 유저가 데이터를 요청하면 데이터를 보내주는 프로그램일뿐!
+//서버야 이거해줘!
+
+//자바랑 브라우저랑 데이터를 주고 받고 할 수있도록 
+//도와주는 역할이 서버(톰캣)다!
+//서버의 세팅을 자동으로 해주는 역할이 바로 springboot 이다
+
+//spring 
+//- 자바 웹/앱을 개발할때 편하게 도와주는 도구!
+//- 좋은 이유가 ! 코드를 아무데나 짜지 않고, 정해진 자리에 정리해서
+//짜게 도와주는 도구!
+//- 자리가 정해져있으니 여러명이 같이 개발해도 헷갈리지 않는다.
+
+//spring 
+//-  웹 프로그램을 구조적으로 개발하도록 도와주는것!
+//- 서버가 요청을 받으면 어떤 Java코드가 처리할지 연결하고 
+// 전체적인 웹 개발을 도와주는 프레임워크
+
+//프레임워크 
+//- 프로그램을 만들 때 사용할 큰 틀과 규칙을 미리 만들어 놓은것!
+
+//스프링 프로젝트 구조!
+//src/main/java 
+//- Java코드만 작성하는 곳!
+
+//MainApplication.java
+//- 프로그램의 시작점 
+//- 서버 실행!
+
+//src/main/resources
+//- 설정파일 등을 놓는곳!(이미지,웹 설정,앱 설정, mysql)
+
+//pom.xml
+//- 필요한 라이브러리 다운로드받는곳!
+
+//Maven Dependncies 
+//- 다운 받아온 라이브러리들이 모여있는 폴더!
+

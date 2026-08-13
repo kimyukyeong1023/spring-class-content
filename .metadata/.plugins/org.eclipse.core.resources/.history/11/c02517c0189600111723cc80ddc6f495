@@ -1,0 +1,15 @@
+package com.yonsai.Day57_20260812_2.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller // 서버에서 응답할때 html파일을 주고싶을때
+public class NaverController {
+
+// 네이버메인페이지 보여줘!
+	@GetMapping("/")
+	public String index() {
+		return "redirect:index.html";
+	}
+
+}

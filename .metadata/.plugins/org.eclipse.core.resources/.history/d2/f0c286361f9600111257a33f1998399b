@@ -1,0 +1,34 @@
+package com.yonsai.Day57_20260812_2.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller // 서버에서 응답할때 html파일을 주고싶을때
+public class NaverController {
+
+// 네이버메인페이지 보여줘!
+	@GetMapping("/")
+	public String index() {
+		return "redirect:index.html";
+	}
+}
+
+/*
+ 1. url을 입력하고 엔터를 치는 순간
+ 2. 크롬이 url을 분석 
+    http로 통신해야되는구나
+    192.168.82.100 컴퓨터로 보내야겠다.
+    8080 포트를 쓰는 프로그램과 연결하겠다.
+    /  메인페이지구나!
+ 3. 크롬이가 이때 HTTP 요청을 만들어냄
+   GET / HTTP/1.1
+   Host: 컴퓨터ip:포트번호
+    
+ 4. 톰켓으로 전송된다!
+ 5. 톰켓이 분석해요! (요청분석)
+    메인페이지 보여줘! 구나
+ 6. 스프링한테 메인페이지 보여달래! 처리해줘!
+ 7. 스프링이 자신의 목록을 보고 아 메인페이지는 
+    NaverController 처리한데! 그때 어떤 함수가 처리한데
+    연결해줄께!(함수실행할께)
+ */

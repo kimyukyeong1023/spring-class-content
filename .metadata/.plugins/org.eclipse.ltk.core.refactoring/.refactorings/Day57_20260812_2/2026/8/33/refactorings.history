@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Day57_20260812_2/src/main/resources/static/NewFile.html&apos; to &apos;blog.html&apos;" description="Rename resource &apos;NewFile.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/resources/static/NewFile.html" name="blog.html" stamp="1786519615192" updateReferences="true"/>
+</session>

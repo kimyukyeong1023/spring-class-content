@@ -1,0 +1,21 @@
+package com.yonsai.Day57_20260812_2.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HomeController {
+	@GetMapping("/hi")
+	public  String hi() {
+		return "hi";
+	}
+	
+	@GetMapping("/")
+	public String main() {
+		return "안녕하세요";
+		
+	@GetMapping("/mypage")
+	public String mypage() {
+		return "mypage입니다.";
+	}
+}

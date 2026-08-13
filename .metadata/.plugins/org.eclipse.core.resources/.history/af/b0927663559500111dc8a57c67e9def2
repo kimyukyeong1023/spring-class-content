@@ -1,0 +1,16 @@
+package com.yonsai.first.Main;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MainApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MainApplication.class, args);
+	}
+
+}
+//자바는 웹통신을 못한다.
+//서버는 유저가 데이터를 요청하면 데이터를 보내주는 프로그램일뿐!
+//서버야 이거해줘!

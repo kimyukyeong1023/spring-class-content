@@ -1,0 +1,23 @@
+package com.yonsai.Day57_20260812_2.controller;
+
+import java.time.LocalDateTime;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HomeController {
+	@GetMapping("/hi")
+	public  String hi() {
+		return "hi";
+	}
+	
+	@GetMapping("/")
+	public String main() {
+		return "안녕하세요";
+	}
+	@GetMapping("/date")
+	public String mypage() {
+		return LocalDateTime.now().toString();
+	}
+}

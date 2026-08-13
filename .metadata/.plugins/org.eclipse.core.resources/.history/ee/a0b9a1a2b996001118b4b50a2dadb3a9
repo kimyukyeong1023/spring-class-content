@@ -1,0 +1,100 @@
+* {
+	margin: 0;
+	padding: 0;
+	/*너비를 계산할때 패딩값과 너비를 같이 계산한다*/
+	box-sizing: border-box;
+	font-size: 16px;
+}
+
+body {
+	/* 브라우저 기본 폰트를 이용해서 배수로 단위 rem*/
+	margin: 1rem;
+	background-color: black;
+	color: white;
+}
+
+a {
+	/*부모에 있는 글자 색상을 그대로 물려받아라!*/
+	color: inherit;
+	text-decoration: none;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+}
+
+main {
+	text-align: center;
+}
+
+main h1 {
+	font-size: 3.5rem; /*16px * 2 = 32px
+     16px * 3 = 48px
+     16px * 3.5 = 56px*/
+}
+
+main h3 {
+	font-size: 1.8rem;
+	color: #86868b;
+}
+
+nav a {
+	margin-right: 1.5rem;
+}
+
+/*가운에 화면 정렬!
+CSS 우선순위!
+태크명이랑 클래스명이랑 클래스명이 우선적으로 적용된다.
+
+*/
+.max-container {
+	width: 1200px;
+	margin: 1rem auto;
+}
+
+.btns {
+	padding: 1rem;
+}
+
+.btns button {
+	background: none;
+	padding: 0.5rem 1.3rem;
+	border: 1px solid #2997ff;
+	border-radius: 2rem;
+	color: #2997ff;
+	margin-right: 1rem;
+}
+
+.main-image img {
+	width: 80%;
+	border-radius: 1.5rem;
+}
+
+.icons i {
+	margin-right: 1rem;
+}
+
+
+/*사용하는 곳 색상 코드 
+전체 페이지 배경 #0b0b0d
+메인 큰 박스 배경 #161618
+상품 이미지 박스 배경 #111113
+박스 테두리 #242528
+제목 / 가격 / 기본 글자 #ffffff
+설명 / 소제목 글자 #86868b
+내추럴 티타늄 #8d8274
+데저트 티타늄 #d1baa7
+화이트 티타늄 #e3e3e5
+블랙 티타늄 #3b3b3d
+파란색 버튼 / 선택 테두리 #2997ff
+선택된 용량 버튼 배경 #141d28
+선택 안 된 버튼 테두리 #2c2c2e
+상품명 라벨 배경 #141416*/
+
+.product{
+	display: flex;
+}
+.product-show img{
+	width: 40%;
+}

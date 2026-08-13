@@ -1,0 +1,30 @@
+package com.yonsai.Day57_20260812_2.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController // 스프링아 웹서버 기능만들께!
+public class EdiyaController {
+
+	// 메인페이지 보여줘!
+	// 메인페이지로 들어오는 시작 경로는 무조건 / url하나만 있어야된다.
+	@GetMapping("/")
+	public String main() {
+		return "이디야 메인 페이지입니다";
+	}
+
+	// 메뉴탭을 눌렀다
+	// 메뉴 페이지 보여줘!
+	@GetMapping("/menu")
+	public String menu() {
+		return "메뉴페이지입니다.";
+	}
+
+	// 메뉴 페이지에서 음료페이지 보여줘!
+	// 하나의 화면과 하나의 url 과 하나의 자바코드 연결된다.
+	@GetMapping("/drink")
+	public String drink() {
+		return "drink 페이지입니다.";
+	}
+
+}
