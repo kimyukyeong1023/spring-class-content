@@ -8,3 +8,4 @@ git branch -M main
 gh push
 
 ```
+**검증**: `git log --oneline -5`로 방금커밋 확인 
