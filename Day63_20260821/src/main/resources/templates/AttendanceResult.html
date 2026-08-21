@@ -1,0 +1,114 @@
+<!-- AttendanceResult.html -->
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, sans-serif;
+      }
+
+      /* 뒷배경 딤 처리 (모달 카드는 영향 안 받음) */
+      .wrap {
+        width: 100%;
+        height: 100vh;
+        background-color: #212529;
+        /* opacity: 0.7; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+
+      /* 모달 카드 (wrap 밖으로 분리해서 선명하게 유지) */
+      .modal-box {
+        width: 380px;
+        background-color: #fff;
+        border-radius: 16px;
+        padding: 40px 32px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        opacity: 1; /* 모달은 100% 선명하게 */
+        position: relative;
+        z-index: 10;
+      }
+
+      .modal-check {
+        width: 70px;
+        height: 70px;
+        background-color: #16a34a;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 20px;
+      }
+
+      .modal-name {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .modal-time {
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+      }
+
+      .modal-notice {
+        background-color: #f3f4f6;
+        border-radius: 8px;
+        padding: 14px;
+        font-size: 0.85rem;
+        color: #374151;
+        margin-bottom: 20px;
+      }
+
+      .modal-btn {
+        width: 100%;
+        padding: 14px;
+        background-color: #1a56db;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: filter 0.15s;
+      }
+
+      .modal-btn:hover {
+        filter: brightness(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="modal-box">
+        <div class="modal-check">✓</div>
+        <h2 class="modal-name" th:text="${studentName} + ' 학생'">학생이름</h2>
+        <p class="modal-time" th:text="${출결응답.checkTime}">시간</p>
+        <div class="modal-notice">
+          📱 학부모님께 출석 알림 문자가 자동 전송되었습니다.
+        </div>
+        <form action="/" method="get">
+        <button class="modal-btn">확인</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

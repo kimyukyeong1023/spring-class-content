@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>메인 페이지!</h2>
+
+    <!-- action = "요청을 보낼 URL"  
+        form태그는 기본적으로 데이터를 조회 GET 방식 요청
+        url에 내가 보내는 데이터가 그대로 노출!
+        POST방식 url에 내가 보내는 데이터를 숨긴다!
+
+        GET 방식 
+          - 데이터를 URL에 붙여서 보낸다.
+          - 주로 조회할 때 사용한다.  
+          - 예) /login?id=qwer&pw=1234
+
+        POST 방식
+          - 데이터를 HTTP요청 body에 담아서 보낸다.
+          - 주로 로그인,회원가입, 데이터 저장 등에 사용한다.
+
+      name 속성 - 브라우저 -> Spring 데이터를 보내는 이름
+      Spring -> 브라우저 데이터를 보낼때 Model
+
+      실질적으로 보안 하고 싶을 경우에는 HTTPS 암호화!
+    -->
+    <form action="/login" method="post">
+      <input type="text" placeholder="아이디" name="id" /><br />
+      <input type="password" placeholder="비밀번호" name="pw" /><br />
+      <button type="submit">로그인</button>
+    </form>
+
+    <h3 th:text="${loginResult}"></h3>
+  </body>
+</html>
+
+<!-- 
+  URL예쁘게 만들기 
+   - 단어들을 동사보다는 명사 위주로 구성함
+   - 띄어쓰기는 언더바_대신 대시 -기호-사용 
+   - 파일 확장자는 쓰지말기 (.html)
+   - 하위 항목을 표현하고 싶을 때 / 기호를 사용하면 좋다!
+
+  facebook.com/seohee/photos
+  instagram.com/explore/tags/food
+
+ -->

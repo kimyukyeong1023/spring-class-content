@@ -1,0 +1,26 @@
+<!-- test.html -->
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>타임리프 if문 예제</h2>
+    <!-- 나이를 받아서 20세 이상이면 성인입니다.
+        태그 안에 if문 사용법 똑같음 true
+    -->
+    <h3 th:if="${age >= 20}">성인입니다.</h3>
+
+    <h3 th:if="${role == 'admin'}">관리자 페이지 입니다.</h3>
+
+    <!-- HTML 화면을 보여줄지 말지 판단하는 조건문! -->
+    <div th:if="${login}">
+      <h3 th:text="${id} +'님 환영합니다!'"></h3>
+    </div>
+
+    <!-- 조건이 안 맞으면 보여줘!(거짓이면 실행해!) -->
+    <div th:unless="${login}">로그인 실패!</div>
+  </body>
+</html>

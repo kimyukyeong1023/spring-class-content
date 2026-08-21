@@ -1,0 +1,98 @@
+<!-- Admin.html -->
+<!doctype html>
+<html lang="en">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      margin-bottom: 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th {
+      text-align: left;
+      padding: 12px 8px;
+      border-bottom: 2px solid #dee2e6;
+      color: #495057;
+      font-size: 0.9rem;
+    }
+    td {
+      padding: 16px 8px;
+      border-bottom: 1px solid #f1f3f5;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .badge-출석 {
+      background-color: #d3f9d8;
+      color: #2b8a3e;
+    }
+    .badge-지각 {
+      background-color: #fff3bf;
+      color: #997404;
+    }
+    .badge-미등원 {
+      background-color: #e9ecef;
+      color: #868e96;
+    }
+  </style>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>학생 출결 관리 및 포인트 지급</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>학생명</th>
+            <th>체크인 시간</th>
+            <th>출석 상태</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="item : ${list}">
+            <td th:text="${item.studentName}"></td>
+            <td th:text="${#temporals.format(item.checkTime, 'HH:mm:ss')}"></td>
+            <td>
+              <span
+                class="badge"
+                th:classappend="'badge-' + ${item.status}"
+                th:text="${item.status}"
+              ></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
