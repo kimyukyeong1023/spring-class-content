@@ -1,0 +1,44 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>재미니한테 질문 보내기!</h2>
+
+    <!-- 데이터를 서버로 보낸다 내용 길면(글이 깨질수있다.)
+       요청을 post로 안전하게 보낸다. -->
+    <form action="/history" method="post">
+      <input type="text" name="msg" placeholder="gemini에게 물어보세요" />
+      <button type="submit">재미니한테전송</button>
+    </form>
+
+    <br />
+    <hr />
+    <h3 th:text="${result}">재미니 답변 출력</h3>
+  </body>
+</html>
+
+<!-- 
+  멀티턴 대화(대화 이력을 관리)
+  - 내가 현재 만든 AI는 기억을 못한다(매번 새로운 대화로 생각한다.)
+  - AI서버 자체는 기억력이 없다! 
+  - 매번 요청할 때 마다 이전 대화 전체를 함께 첨부해서 재미니한테보낸다.
+
+
+
+  AI가 거짓말한다.
+  Hallucination 없는 정보를 사실처럼 답변한다.
+
+  Temperature
+   - AI 답변을 얼마나 다양하게 자유롭게 만들지 조절하는 값
+   - 창의성/랜덤성 조절하는 값!
+
+  0 거의 항상 일관된 답변 
+  0.5~0.7 기본적으로 적당하고 다양한 답변 
+  1.0 이상 예측하기 어려운 답변!
+    - 너무 말이 이상해지거나 다른 내용이 나올 가능성 높음!
+ -->

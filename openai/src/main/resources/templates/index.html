@@ -1,0 +1,33 @@
+<!-- 파일명: index.html -->
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>GPT AI 사용하기</h2>
+
+    <h3>GPT 한테 이미지 보내기</h3>
+    <form action="/img" method="post" enctype="multipart/form-data">
+      <label for="question">이미지로 질문</label>
+      <input type="file" id="question" accept="image/*" name="img" />
+
+      <button type="submit">전송</button>
+    </form>
+
+    <br /><br /><br /><br /><br />
+    <hr />
+    <form action="/history" method="post">
+      <label for="question">질문</label>
+      <input type="text" id="question" name="question" />
+      <button type="submit">전송</button>
+    </form>
+
+    <br />
+    <hr />
+    <h2>답변</h2>
+    <h3 th:text="${question}">질문 내용</h3>
+  </body>
+</html>
