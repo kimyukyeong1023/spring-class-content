@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>웹 크롤링 하기</h2>
+    <a href="/craw">크롤링 시작</a>
+
+    <hr>
+    <br><br><br>
+    <h2>AI한테 질문하기</h2>
+    <!-- 
+    input채그로 입력 받앙서 /quwstion 받으면 questionPro실행
+    답변받는 순서
+
+    -->
+    <form th:action="@{/embedding}" method="get" >
+      <button type="submit">임베딩하기</button>
+      <p th:text="${status}" ></p>
+    </form>
+    <form th:action="@{/question}" method="get" >
+      <input type="text" placeholder="질문을 입력" name="question">
+      <button type="submit">질문하기</button>
+      <p th:text="${answer}" ></p>
+    </form>
+
+    <br><br><br>
+    <h2>PDF 문서 자르기</h2>
+    <form th:action="@{/pdf}" method="get">
+      <button type="submit">pdf</button>
+    </form>
+
+
+    
+  </body>
+</html>

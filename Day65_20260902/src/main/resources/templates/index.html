@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AI 질문</title>
+</head>
+<body>
+    <h1>AI에게 질문하기</h1>
+
+    <form action="/ask" method="post">
+        <input type="text" name="question" placeholder="질문을 입력하세요" required>
+        <button type="submit">질문</button>
+    </form>
+
+    <div th:if="${answer != null}">
+        <p>질문: <span th:text="${question}"></span></p>
+        <p>답변: <span th:text="${answer}"></span></p>
+    </div>
+</body>
+</html>
