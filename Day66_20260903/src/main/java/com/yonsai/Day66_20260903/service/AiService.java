@@ -1,16 +1,21 @@
 package com.yonsai.Day66_20260903.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.content.Media;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.reader.pdf.PagePdfDocumentReader;
 import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.MimeType;
+import org.springframework.util.MimeTypeUtils;
 // @어노테이션 
 //  - 스프링한테 요청 처리하는 객체야! 알려주는것!
 // IOC컨테이너 (스프링 핵심!)
@@ -59,7 +64,7 @@ public class AiService {
         List<Document> originFile = file.get();
         // 3. 토큰 나누기
         TokenTextSplitter tokenSplitter = TokenTextSplitter.builder()
-                .withChunkSize(200)
+                .withChunkSize(100)
                 .build();
         List<Document> docs = tokenSplitter.apply(originFile);
 
@@ -78,7 +83,6 @@ public class AiService {
 
     // 벡터 저장
     public void saveToVectorStore(List<Document> docs) {
-        System.out.println("AiService - saveToVectorStore()");
         // 1. 벡터 생성
         vector = SimpleVectorStore
                 .builder(embeddingModel)
@@ -112,7 +116,6 @@ public class AiService {
         for (Document chunk : relevantChunks) {
             context += chunk.getText() + "\n\n";
         }
-        System.out.println(context);
 
         // 4. 채팅창 생성
         chatClient = ChatClient.builder(chatModel).build();
@@ -134,4 +137,41 @@ public class AiService {
         return answer;
     }
 
+    // 이미지 분석해줘!(ai한테 이미지 보내기 전에 준비작업!)
+    public String 이미지분석(MultipartFile image) {
+        System.out.println("AiService - 이미지분석()");
+
+        // 1. 업로드된 이미지를 바이트(0과1)로 바꾸기
+        try {
+            byte[] 바이트배열로변경 = image.getBytes();
+
+            // 2. spring ai가 이해하는 Media객체가 파일 데이터와
+            // 파일의 정보를 AI에게 묶어서 보내는 객체!
+            Media 하나로합친이미지객체 = new Media(MimeTypeUtils.IMAGE_PNG,
+                    new ByteArrayResource(바이트배열로변경));
+            // 3. 채팅창 생성
+            chatClient = ChatClient.builder(chatModel).build();
+
+            // 4. 실제 전송 (텍스트랑 이미지랑 함께 전달!)
+            String 결과 = chatClient
+                    .prompt()
+                    .user(u -> u.text("이 사진 자세히 설명해줘")
+                            .media(하나로합친이미지객체))
+                    .call()
+                    .content();
+            System.out.println("답변: "+결과);
+
+            return 결과;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
 }
+/*
+ * Resource
+ * - 어딘가에 있는 파일이나 데이터를 하나의 공통 방식으로 다루는 객체
+ * - spring 에서 파일을 읽을 때 사용하는 공통 규칙!
+ */

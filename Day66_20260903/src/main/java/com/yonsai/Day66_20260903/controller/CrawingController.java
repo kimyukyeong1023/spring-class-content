@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -66,7 +67,7 @@ public class CrawingController {
     // 자동화 기초
     // 1. 브라우저 열기
     @GetMapping("/sel")
-    public String 자동화화면열기() {
+    public String 자동화화면열기() throws InterruptedException {
         System.out.println("CrawingController - 자동화화면열기()");
 
         // 브라우저 조종할 수있게 준비!
@@ -83,15 +84,63 @@ public class CrawingController {
         // 크롬아! 네이버들어가서 id가 query인 태그를 찾아줄래?
         // WebElement = 웹 페이지 안에 있는 하나의 요소를 자바 객체로
         // 가져와!
-        // outerHTML - 시작태그 + 내용 + 끝태그 전부
         WebElement 찾은태그 = driver.findElement(By.id("query"));
-        System.out.println(찾은태그.getDomProperty("outerHTML"));
+
+        // 셀레니움에서 키보드 입력은 크게 두가지 방식!
+        찾은태그.sendKeys("스프링부트");
+
+        // 기다리는 시간(지연(Delay)) 1초 기다리기!
+        // 초시간을 랜덤으로 변경
+        Thread.sleep(1000);
+
+        // 엔터누르기
+        찾은태그.sendKeys(Keys.ENTER);
+
+        Thread.sleep(2000);
+
+        // 링크 텍스트로 "블로그" 탭 찾기
+        driver // 크롬아
+                .findElement( // 찾아줘!
+                        By.linkText("블로그") // 링크들 중에 블로그 텍스트 내용 태그
+                )
+                .click(); // 클릭해라!
+
+        // 1.5초 기다려!
+        Thread.sleep(1500);
+
+        List<WebElement> 제목들 = driver
+                .findElements(
+                        By.partialLinkText("스프링부트"));
+        System.out.println("찾은 제목들의 개수:" + 제목들.size());
+        // 찾은 태그 전체 내용 가져오기 getDomProperty
+        // outerHTML - 시작태그+ 내용 + 끝태그 전부
+        // System.out.println(찾은태그.getDomProperty("outerHTML"));
 
         return "index";
     }
 
 }
 /*
+ * 
+ * 셀레니움으로 요소들을 찾을 때
+ * By 8가지 종류!
+ * 1. id(아이디명)
+ * 2. id가 없을 때 cssSelector() 가장 실용적!
+ * 3. xpath()
+ * 
+ * 4. name()
+ * 5. className()
+ * 6. tagName()
+ * 7. linkText() - a태그들을 찾아서 그 안에 내용이 완전 똑같은 태그!
+ * 8. partialLinkText - a태그들 중에 내용이 포함되어있는 태그들 모두 찾을때!
+ * 
+ * 
+ * 셀레니움
+ * - 사람 대신 웹브라우저를 자동으로 움직여주는 도구!
+ * 
+ * 실무에서 지연시킬때 사용하는 도구!
+ * - 웹페이지의 어떤 요소가 준비될 때까지 기다려주는 기능!
+ * WebDriverWait
  * 
  * // 로그 항상찍기!
  * System.out.println("CrawingController - craw()");
@@ -131,6 +180,8 @@ public class CrawingController {
  * // 페이지이동!
  * return "index";
  * 
+ * 자동화 봇인지 잡는 기준!
+ * - 속도,반복패턴,요청량,마우스,키보드행동,IP패턴,쿠키/세션
  * 
  * 
  */

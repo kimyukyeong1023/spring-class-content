@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PgVector</title>
+  </head>
+  <body>
+
+    <form action="/mcp2" method="get">
+      <input type="text" name="msg" />
+      <button type="submit">mcp활용</button>
+    </form>
+
+    <hr>
+    <br><br><br><br>
+    <h1>PgVector</h1>
+    <h2>호텔 검색하기(내용)</h2>
+    
+
+    <form action="/hotel" method="get">
+      <input type="text" name="desc" />
+      <button type="submit">검색</button>
+    </form>
+    <br />
+    <br /><br /><br />
+    <hr />
+
+    <h2>이름으로 검색하기</h2>
+
+
+    <form action="/search" method="get">
+      이름<input type="text" name="name" />
+      <button type="submit">학생 이름 검색</button>
+    </form>
+    <br />
+
+    <h3>검색된 이름:</h3>
+
+    <hr />
+    <br /><br /><br /><br /><br />
+
+    <form action="/add" method="post">
+      이름<input type="text" name="name" /> 나이<input type="text" name="age" />
+      주소<input type="text" name="address" />
+      <button type="submit">학생 등록</button>
+    </form>
+  </body>
+</html>

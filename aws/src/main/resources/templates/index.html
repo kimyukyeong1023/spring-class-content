@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AWS S3</title>
+
+    <style>
+      .box {
+        width: 400px;
+        height: 200px;
+        border: 2px dashed red;
+
+        /* 가로정렬 */
+        text-align: center;
+        /* 세로정렬 */
+        /* line-height: 200px; */
+
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: center;
+      }
+
+      .preview-box {
+        width: 95%;
+        height: 80px;
+        /* border: 2px solid blue; */
+      }
+      .preview-box img {
+        width: 80px;
+        height: 80px;
+        border-radius: 10px;
+        margin-right: 10px;
+      }
+
+      /* input file창을 숨긴다. */
+      #fileInput {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>AWS S3</h2>
+
+    <h3>드래그 해서 이미지 업로드</h3>
+    <p>드래그 파일을 클릭한 채 끌고 오기! (Drag) 하나만 가져올때</p>
+    <div class="box" id="box">
+      여기에 파일을 끌어다 놓으세요!
+
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput" />
+        <button type="submit">전송</button>
+      </form>
+
+      <!-- 아래쪽에 박스를 두고 스타일을 지정하고 추가하는것이 낫다! -->
+      <div class="preview-box" id="preview-box"></div>
+    </div>
+    <script>
+      // 1. 드래그 상자 찾기!
+      //  document == 현재 파일(index.html)
+      let 드래그상자 = document.getElementById("box");
+      console.log(드래그상자);
+
+      //2. 이벤트 달기
+      드래그상자.ondragover = function (이벤트) {
+        이벤트.preventDefault();
+        console.log("파일을 상자 위로 끌고 오면 -> 놓기를 허용!");
+      };
+
+      드래그상자.ondrop = function (이벤트) {
+        이벤트.preventDefault();
+        console.log("파일을 상자 위에 놓았을때 실행하는 이벤트!");
+
+        // 파일을 놓으면 콘솔에 파일을 출력!
+        // dataTransfer -  드래그로 전달된 데이터!
+        // files[0] - 전달된 파일들 중에 첫번째목록!
+        // files - 놓은 파일 전체 가져오기!
+        let 파일 = 이벤트.dataTransfer.files[0];
+        console.log(파일);
+
+        // 미리보기 기능
+        // 이미지 태그를 만들어서 사용해야된다.
+        let 이미지 = document.createElement("img");
+        console.log(이미지);
+
+        // 미리보기용 임시 URL을 생성 (브라우저에 잠깐 저장해놓겠다)
+        // 브라우저는 여러 기능이 URL문자 여러개를 받도록 설계!
+        이미지.src = URL.createObjectURL(파일);
+
+        // 작게 디자인 하는 코드!
+
+        //상자 안에 추가해라!
+        let 미리보기창 = document.getElementById("preview-box");
+        미리보기창.appendChild(이미지);
+
+        // 숨겨진 input태그에 값을 넣기!
+        document.getElementById("fileInput").files = 이벤트.dataTransfer.files;
+      };
+    </script>
+
+    <h3>여러개의 드래그 파일을 업로드</h3>
+    <p>multiple 설정을 하면 여러개의 파일을 올릴수있다.</p>
+    <div class="box" id="box2">
+      <input type="file" name="file" multiple />
+    </div>
+
+    <script>
+      // 1. 드래그 상자 찾기!
+      //  document == 현재 파일(index.html)
+      let 드래그상자2 = document.getElementById("box2");
+      console.log(드래그상자2);
+
+      //2. 이벤트 달기
+      드래그상자2.ondragover = function (이벤트) {
+        이벤트.preventDefault();
+        console.log("파일을 상자 위로 끌고 오면 -> 놓기를 허용!");
+      };
+
+      드래그상자2.ondrop = function (이벤트) {
+        이벤트.preventDefault();
+        console.log("파일을 상자 위에 놓았을때 실행하는 이벤트!");
+
+        // 파일을 놓으면 콘솔에 파일을 출력!
+        // dataTransfer -  드래그로 전달된 데이터!
+        // files[0] - 전달된 파일들 중에 첫번째목록!
+        // files - 놓은 파일 전체 가져오기!
+        let 파일2 = 이벤트.dataTransfer.files;
+        console.log(파일2);
+      };
+    </script>
+
+    <hr />
+    <br /><br /><br /><br />
+
+    <h3>이미지 S3 업로드</h3>
+    <!-- action="/upload" method="post" 설정하면 데이터 문자로 간다. -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" />
+      <button type="submit">업로드</button>
+    </form>
+  </body>
+</html>

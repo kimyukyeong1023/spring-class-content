@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: aws
+  ai:
+    openai:
+      api-key: "${OPENAI_API_KEY}"
+      chat:
+        model: gpt-4o-mini
+
+#공공데이터 API-KEY
+public-data:
+  service-key: "${TOURIST_API_KEY}"

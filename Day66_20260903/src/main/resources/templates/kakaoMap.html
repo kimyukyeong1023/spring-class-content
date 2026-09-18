@@ -1,0 +1,106 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <title>키워드로 장소검색하고 목록으로 표출하기</title>
+  </head>
+  <body>
+    <form action="/chatBot" method="get">
+        <input type="text" name="q">
+        <button type="submit">전송</button>
+    </form>
+    <br>
+    <hr>
+    <h2 th:text="${answer}">결과</h2>
+
+
+    <!-- 지도를 띄워주는 태그! -->
+    <div id="map" style="width: 100%; height: 500px"></div>
+
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=key&libraries=services"
+    ></script>
+
+    <!-- 타임리프에서 가져오는 값을 자바스크립트 안으로 저장을 해야된다.
+      th:inline : script태그 안쪽 내용까지 내가 넘겨준 데이터를 사용할 수있도록 
+                  해주는 설정!
+      HTML 브라우저에 도착하면 List<DTO> 자바의 타입은 자바스크립트가 모르기 떄문에
+      자바스크립트의 타입으로 바꿔줘야된다. 자동으로 Json타입으로(Object)
+     -->
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+      var pharmacies = /*[[${ph}]]*/ [];
+      /*]]>*/
+    </script>
+
+    <script>
+      console.log(pharmacies);
+
+      // 카카오지도를 어디에 띄울지 + 처음 지도를 어디 중심으로 보여줄지 설정
+      var mapContainer = document.getElementById("map"),
+        mapOption = {
+          center: new kakao.maps.LatLng(37.5665, 126.978),
+          level: 8,
+        };
+      //지도 생성
+      var map = new kakao.maps.Map(mapContainer, mapOption);
+
+      // 주소를 좌표로 바꾸는 도구 생성
+      var geocoder = new kakao.maps.services.Geocoder();
+
+      // 마커생성
+      var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+
+      // 여러 마커가 모두 화면 안에 들어오도록 지도 범위를 계산하는 도구!
+      var bounds = new kakao.maps.LatLngBounds();
+
+      // 약국목록들을 반복하면서 주소를 가지고와서 검색 후 마커로 출력
+      pharmacies.forEach(function (pharmacy) {
+        if (!pharmacy.주소) return; // 주소가없으면 배열의 다음 공간으로 이동해라
+
+        // 주소검색
+        geocoder.addressSearch(pharmacy.주소, function (result, status) {
+          // 처리결과 상태
+          if (status === kakao.maps.services.Status.OK) {
+            // 좌표
+            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+            // 지도 위 표시점
+            var marker = new kakao.maps.Marker({
+              position: coords,
+              map: map,
+            });
+
+            // 영업상태글자
+            var statusText = pharmacy.영업중 ? "영업중" : "영업종료";
+
+            // 정보창에 보여줄 내용!
+            var content =
+              '<div style="padding:5px;font-size:12px;">' +
+              "<b>" +
+              pharmacy.이름 +
+              "</b><br>" +
+              (pharmacy.전화번호 || "전화번호 없음") +
+              "<br>" +
+              statusText +
+              "</div>";
+
+            // 이벤트 감지 마우스가 마커위에 있니? 클릭됬니?
+            kakao.maps.event.addListener(marker, "click", function () {
+              infowindow.setContent(content);
+              infowindow.open(map, marker);
+            });
+
+            // 범위에 좌표 추가!
+            bounds.extend(coords);
+            // 모든 마커 보임!
+            map.setBounds(bounds);
+          } else {
+            console.warn("좌표 변환 실패:", pharmacy.주소);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

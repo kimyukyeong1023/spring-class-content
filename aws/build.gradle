@@ -1,0 +1,61 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.0.8'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.yonsai'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+  set('springAiVersion', "2.0.1")
+}
+
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-thymeleaf-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// AWS 최상단에 작성!
+	// AWS 라이브러리 버전 관리
+	implementation platform('software.amazon.awssdk:bom:2.27.21')
+
+	// S3 파일 업로드.다운로드 기능 
+	implementation 'software.amazon.awssdk:s3'
+
+  // XML 파싱 도구!
+  implementation 'tools.jackson.dataformat:jackson-dataformat-xml'
+
+	// openai도구!
+	implementation 'org.springframework.ai:spring-ai-starter-model-openai'
+
+	// 백터DB 추가
+	implementation 'org.springframework.ai:spring-ai-vector-store'
+
+
+}
+
+// Ai버전관리하는 도구!
+dependencyManagement {
+  imports {
+    mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
+  }
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

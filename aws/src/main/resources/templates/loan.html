@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>서민금융진흥원</title>
+    <link rel="stylesheet" href="loan.css" />
+  </head>
+  <body>
+    <div class="app-frame">
+      <!-- 헤더 -->
+      <header class="app-header">
+        <div class="logo">
+          <span class="logo-mark">서</span>
+          <span class="logo-text">서민금융진흥원</span>
+        </div>
+        <div class="header-icons">
+          <button class="icon-btn" aria-label="검색">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </button>
+          <button class="icon-btn" id="btn-cs-header" aria-label="고객센터">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M4 13a8 8 0 0 1 16 0" />
+              <path d="M19 13v4a2 2 0 0 1-2 2h-1" />
+              <rect x="3" y="13" width="4" height="6" rx="1" />
+              <rect x="17" y="13" width="4" height="6" rx="1" />
+            </svg>
+          </button>
+          <button class="btn-login">로그인</button>
+        </div>
+      </header>
+
+      <!-- 메인 콘텐츠 -->
+      <main class="app-main">
+        <!-- 서민금융 잇다 추천 카드 (동적 데이터라서 코드로 작성) -->
+        <section class="ida-card">
+          <div class="ida-logo">
+            <span class="ida-logo-mark">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M8 13V7a2 2 0 0 1 4 0" />
+                <path d="M12 13V6a2 2 0 0 1 4 0v7" />
+                <path
+                  d="M16 13V8a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6h-2a6 6 0 0 1-5.2-3l-2-3.5a1.6 1.6 0 0 1 2.6-1.8L8 13"
+                />
+              </svg>
+            </span>
+            <span class="ida-logo-text">서민금융 <strong>잇다</strong></span>
+          </div>
+
+          <p class="ida-headline">님을 위한<br />맞춤 서비스!</p>
+
+          <div class="ida-timer">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 2" />
+            </svg>
+            <span id="ida-countdown">01:39:14</span>
+          </div>
+
+          <div class="ida-stats">
+            <div class="ida-stat">
+              <span class="ida-stat-label">대출비교</span>
+              <span class="ida-badge">추천</span>
+              <strong class="ida-stat-value">1건</strong>
+            </div>
+            <div class="ida-stat">
+              <span class="ida-stat-label">복합상담</span>
+              <span class="ida-badge">추천</span>
+              <strong class="ida-stat-value">0건</strong>
+            </div>
+          </div>
+
+          <button class="ida-cta">잇다 이어하기</button>
+        </section>
+
+        <!-- 최근 인기상품 -->
+        <section class="popular">
+          <h3 class="popular-title">
+            최근 <span class="popular-title-accent">인기상품</span>
+          </h3>
+          <div class="popular-list">
+            <div class="popular-item">
+              <span class="popular-icon" style="background: #e3f6f2">💳</span>
+              <span class="popular-label">햇살론카드</span>
+            </div>
+            <div class="popular-item">
+              <span class="popular-icon" style="background: #f1e9ff">💰</span>
+              <span class="popular-label">불법사금융<br />예방대출</span>
+            </div>
+            <div class="popular-item">
+              <span class="popular-icon" style="background: #e5edff">📊</span>
+              <span class="popular-label">햇살론<br />통합 신청</span>
+            </div>
+            <div class="popular-item">
+              <span class="popular-icon" style="background: #fdecdc">🪜</span>
+              <span class="popular-label">징검다리론</span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- 하단 네비게이션 -->
+      <nav class="bottom-nav">
+        <button class="nav-item active">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M3 11.5 12 4l9 7.5" />
+            <path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9" />
+          </svg>
+          <span>홈</span>
+        </button>
+        <button class="nav-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M6 8h12l1 12H5L6 8Z" />
+            <path d="M9 8a3 3 0 0 1 6 0" />
+          </svg>
+          <span>상품/서비스</span>
+        </button>
+        <button class="nav-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <rect x="5" y="3" width="14" height="18" rx="1" />
+            <line x1="8" y1="8" x2="16" y2="8" />
+            <line x1="8" y1="12" x2="16" y2="12" />
+            <line x1="8" y1="16" x2="13" y2="16" />
+          </svg>
+          <span>신청내역</span>
+        </button>
+        <button class="nav-item" id="btn-cs-bottom">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M4 13a8 8 0 0 1 16 0" />
+            <path d="M19 13v4a2 2 0 0 1-2 2h-1" />
+            <rect x="3" y="13" width="4" height="6" rx="1" />
+            <rect x="17" y="13" width="4" height="6" rx="1" />
+          </svg>
+          <span>고객센터</span>
+        </button>
+        <button class="nav-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <rect x="4" y="4" width="6" height="6" rx="1" />
+            <rect x="14" y="4" width="6" height="6" rx="1" />
+            <rect x="4" y="14" width="6" height="6" rx="1" />
+            <rect x="14" y="14" width="6" height="6" rx="1" />
+          </svg>
+          <span>전체메뉴</span>
+        </button>
+      </nav>
+
+      <!-- 고객센터 바텀시트 -->
+      <div class="sheet-overlay" id="sheet-overlay"></div>
+      <div
+        class="cs-sheet"
+        id="cs-sheet"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cs-sheet-title"
+      >
+        <div class="cs-sheet-handle"></div>
+        <div class="cs-sheet-header">
+          <h2 id="cs-sheet-title">고객센터</h2>
+          <button class="sheet-close" id="sheet-close" aria-label="닫기">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="5" y1="5" x2="19" y2="19" />
+              <line x1="19" y1="5" x2="5" y2="19" />
+            </svg>
+          </button>
+        </div>
+        <div class="cs-options">
+          <button class="cs-option" id="btn-open-chat">
+            <span class="cs-icon cs-icon-chat">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M21 12a8 8 0 0 1-8 8H7l-4 3 1-5.5A8 8 0 1 1 21 12Z" />
+              </svg>
+            </span>
+            <span class="cs-label">챗봇상담하기</span>
+          </button>
+          <button class="cs-option">
+            <span class="cs-icon cs-icon-call">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"
+                />
+              </svg>
+            </span>
+            <span class="cs-label">1397 콜센터</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 챗봇 팝업 -->
+      <div class="chat-overlay" id="chat-overlay"></div>
+      <div class="chat-popup" id="chat-popup" role="dialog" aria-modal="true">
+        <div class="chat-header">
+          <span>챗봇 상담</span>
+          <button class="chat-close" id="chat-close" aria-label="닫기">
+            ✕
+          </button>
+        </div>
+        <div class="chat-body" id="chat-body">
+          <div class="chat-msg bot">안녕하세요! 무엇을 도와드릴까요? 😊</div>
+        </div>
+        <form class="chat-input-row" id="chat-form">
+          <input
+            type="text"
+            id="chat-input"
+            placeholder="메시지를 입력하세요"
+            autocomplete="off"
+          />
+          <button type="submit">전송</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const openBtns = [
+        document.getElementById("btn-cs-header"),
+        document.getElementById("btn-cs-bottom"),
+      ];
+      const overlay = document.getElementById("sheet-overlay");
+      const sheet = document.getElementById("cs-sheet");
+      const closeBtn = document.getElementById("sheet-close");
+
+      function openSheet() {
+        overlay.classList.add("open");
+        sheet.classList.add("open");
+      }
+      function closeSheet() {
+        overlay.classList.remove("open");
+        sheet.classList.remove("open");
+      }
+
+      openBtns.forEach(
+        (btn) => btn && btn.addEventListener("click", openSheet),
+      );
+      closeBtn.addEventListener("click", closeSheet);
+      overlay.addEventListener("click", closeSheet);
+
+      // ---- 챗봇 팝업 ----
+      const chatOverlay = document.getElementById("chat-overlay");
+      const chatPopup = document.getElementById("chat-popup");
+      const chatClose = document.getElementById("chat-close");
+      const chatOpenBtn = document.getElementById("btn-open-chat");
+      const chatBody = document.getElementById("chat-body");
+      const chatForm = document.getElementById("chat-form");
+      const chatInput = document.getElementById("chat-input");
+
+      function openChat() {
+        closeSheet(); // 고객센터 바텀시트는 닫고
+        chatOverlay.classList.add("open");
+        chatPopup.classList.add("open");
+      }
+      function closeChat() {
+        chatOverlay.classList.remove("open");
+        chatPopup.classList.remove("open");
+      }
+      function addMessage(text, from) {
+        const msg = document.createElement("div");
+        msg.className = "chat-msg " + from;
+        msg.textContent = text;
+        chatBody.appendChild(msg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+
+      chatOpenBtn.addEventListener("click", openChat);
+      chatClose.addEventListener("click", closeChat);
+      chatOverlay.addEventListener("click", closeChat);
+
+      chatForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const text = chatInput.value.trim();
+        if (!text) return;
+        addMessage(text, "user");
+        chatInput.value = "";
+        // 간단한 자동 응답 (실제 서비스 연동 전까지 임시)
+        setTimeout(() => addMessage("네, 확인 후 안내드릴게요!", "bot"), 400);
+      });
+    </script>
+  </body>
+</html>

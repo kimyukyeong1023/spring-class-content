@@ -98,7 +98,18 @@
       <version>5.9.2</version>
     </dependency>
 
+     <!-- Google Vision API  -->
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>google-cloud-vision</artifactId>
+    </dependency>
+
+
+
+
+
   </dependencies>
+  
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -108,6 +119,16 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+        <!-- 구글 클라우드 라이브러리들의 버전을 통일적으로 관리 -->
+      <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>libraries-bom</artifactId>
+            <version>26.66.0</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+
     </dependencies>
   </dependencyManagement>
 
