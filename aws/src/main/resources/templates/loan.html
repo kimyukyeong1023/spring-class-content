@@ -260,12 +260,13 @@
         <div class="chat-body" id="chat-body">
           <div class="chat-msg bot">안녕하세요! 무엇을 도와드릴까요? 😊</div>
         </div>
-        <form class="chat-input-row" id="chat-form">
+        <form action="/loanpage" class="chat-input-row" id="chat-form">
           <input
             type="text"
             id="chat-input"
             placeholder="메시지를 입력하세요"
             autocomplete="off"
+            name="qus"
           />
           <button type="submit">전송</button>
         </form>
@@ -327,13 +328,18 @@
       chatOverlay.addEventListener("click", closeChat);
 
       chatForm.addEventListener("submit", function (e) {
-        e.preventDefault();
+        e.preventDefault(); // 브라우저가 원래 하려던 행동을 막는다.
         const text = chatInput.value.trim();
         if (!text) return;
         addMessage(text, "user");
         chatInput.value = "";
         // 간단한 자동 응답 (실제 서비스 연동 전까지 임시)
         setTimeout(() => addMessage("네, 확인 후 안내드릴게요!", "bot"), 400);
+
+        // 자바스크립트에서 서버로 전송
+        fetch("/loanpage?qus=" + encodeURIComponent(text)).then((resp) =>
+          resp.text())
+          .then(data =>console.log(data));
       });
     </script>
   </body>

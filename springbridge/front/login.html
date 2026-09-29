@@ -1,0 +1,35 @@
+<!-- login.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+
+    <input type="text" placeholder="아이디" id="inputId">    
+    <button onclick="
+        let input = document.getElementById('inputId');
+        let inputId =input.value;
+        console.log(inputId);
+
+            axios.get('http://localhost:8080/login',{params: {userId: inputId}})
+        .then(resp=>{
+            console.log(resp.data);
+        })
+
+      // 1. 아이디 입력 태그 찾기 
+
+      // 2. 확인 
+
+      // 3. 서버로 전송 get - 컨트롤러 login
+
+      // 4. 응답 콘솔에 찍기!    
+
+    ">아이디확인</button>
+
+
+  </body>
+</html>
